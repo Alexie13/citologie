@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celula - Unitatea Fundamentală a Vieții</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Variabile CSS preluate din primul site */
+        :root {
+            --primary-color: #00e6c0;
+            --secondary-color: #00b3a1;
+            --background-color: #021726;
+            --dark-color: #01111b;
+            --text-color: #ffffff;
+            --card-background: rgba(0, 230, 192, 0.1);
+            --card-border: rgba(0, 230, 192, 0.3);
+            --orange-neon: #FF9500;
+            --orange-dark: #FF5E3A;
+            --yellow-neon: #FFD60A;
+            --yellow-dark: #FFC107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            height: 60px;
+            background-color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Buton Acasă - Design îmbunătățit și centrat */
+        .home-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--dark-color);
+            border: none;
+            padding: 6px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 230, 192, 0.3);
+            text-transform: uppercase;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .home-button:hover {
+            transform: translateY(calc(-50% - 3px)) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 230, 192, 0.5);
+        }
+
+        .home-button:active {
+            transform: translateY(calc(-50% + 1px));
+        }
+
+        .home-button i {
+            font-size: 1.1rem;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-top: 80px;
+            padding: 20px;
+            transition: margin-left 0.4s ease;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .page-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Card pentru conținut */
+        .content-card {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 230, 192, 0.5);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .subsection-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        /* Text formatat */
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Highlight pentru termeni importanți */
+        .highlight {
+            color: var(--yellow-neon);
+            font-weight: 600;
+        }
+
+        .right-align {
+            margin-left: 20px;
+        }
+
+        /* Spațiu pentru imagini */
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: var(--card-background);
+            border: 2px dashed var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+        }
+
+        .image-placeholder::before {
+            content: "Spațiu pentru imagine";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Brain Decoration */
+        .brain-decoration {
+            position: fixed;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300e6c0'%3E%3Cpath d='M12 2c1.9 0 3.6.8 4.8 2 1.2 1.2 2 2.9 2 4.8 0 3.2-2.2 5.8-5.2 6.6v.6c0 1.1-.9 2-2 2h-.4c-1.1 0-2-.9-2-2v-.6C6.2 14.6 4 12 4 8.8c0-1.9.8-3.6 2-4.8C7.4 2.8 9.1 2 11 2h1zm0 2c-1.3 0-2.5.5-3.4 1.4-.9.9-1.4 2.1-1.4 3.4 0 2.2 1.5 4.1 3.6 4.7.2.1.4.3.4.5v1c0 .6.4 1 1 1h.8c.6 0 1-.4 1-1v-1c0-.2.2-.4.4-.5 2.1-.6 3.6-2.5 3.6-4.7 0-1.3-.5-2.5-1.4-3.4-.9-.9-2.1-1.4-3.4-1.4h-1z'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(45deg);
+        }
+
+        /* Conținut extensibil */
+        .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-background);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 20px 0 0 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .title-container h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .toggle-btn {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background-color: var(--secondary-color);
+            transform: rotate(90deg);
+        }
+
+        .content-box {
+            border: 1px solid var(--card-border);
+            border-top: none;
+            padding: 20px;
+            border-radius: 0 0 5px 5px;
+            background-color: var(--card-background);
+            transition: all 0.3s ease;
+        }
+
+        .section-centered {
+            text-align: center;
+        }
+
+        .alte-pagini {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .alte-pagini:hover {
+            color: var(--yellow-neon);
+        }
+
+        .poza-patru {
+            padding-left: 10%;
+        }
+
+        /* Responsive design îmbunătățit */
+        @media (max-width: 992px) {
+            .main-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+            
+            .home-button {
+                left: 10px;
+                min-width: 90px;
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .subsection-title {
+                font-size: 1.2rem;
+            }
+            
+            .image-placeholder {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 10px;
+                margin-top: 70px;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            .logo svg {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .home-button {
+                left: 5px;
+                min-width: 70px;
+                padding: 4px 8px;
+                font-size: 0.7rem;
+            }
+            
+            .home-button i {
+                font-size: 0.9rem;
+            }
+            
+            .page-title {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .subsection-title {
+                font-size: 1.1rem;
+            }
+            
+            .image-placeholder {
+                height: 150px;
+            }
+            
+            .content-card {
+                padding: 15px;
+            }
+            
+            p, li {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            header {
+                height: 50px;
+            }
+            
+            .logo h1 {
+                font-size: 1rem;
+            }
+            
+            .logo svg {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .home-button {
+                min-width: 60px;
+            }
+            
+            .main-content {
+                margin-top: 60px;
+                padding: 8px;
+            }
+            
+            .content-card {
+                padding: 12px;
+            }
+            
+            .page-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            p, li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brain-decoration"></div>
+    
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="home-button"><i class="fas fa-home"></i> Acasă</a>
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,50 Q40,30 50,50 Q60,70 70,50" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,40 Q50,20 70,40" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,60 Q50,80 70,60" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M45,35 Q50,30 55,35" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M45,65 Q50,70 55,65" fill="none" stroke="#00e6c0" stroke-width="2" />
+            </svg>
+            <h1>BIOGENIUS ACADEMY</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2 class="page-title">Celula - Unitatea Fundamentală a Vieții</h2>
+        
+        <!-- Introducere -->
+        <div class="content-card">
+            <h3 class="section-title">Ultrastructura celulelor procariote și eucariote:</h3>
+            
+            <p><span class="right-align">Celulele</span> procariote sunt cele mai simple și mai vechi tipuri de celule, întâlnite în principal la bacterii și archaea. Iată o descriere clară și concisă:
+            <br><br>
+            <h3 class="subsection-title">Celulele procariote:</h3><br><br>    
+                •	Nucleu: Nu au un nucleu delimitat de membrană. Materialul genetic (ADN-ul) este liber în citoplasmă, într-o zonă numită nucleoid.
+               <br> •	Material genetic: ADN-ul este circular și, în general, este format dintr-o singură moleculă. Pot avea și plasmide – fragmente mici de ADN cu gene suplimentare.
+                <br>•	Organite: Nu au organite membranare (precum mitocondrii, reticul endoplasmatic etc.). Singurele structuri celulare sunt ribozomii (de tip 70S), implicați în sinteza proteinelor.
+                <br>•	Membrană celulară: Prezente, cu rol în schimburile celulei cu mediul.
+                <br>•	Perete celular: Majoritatea au un perete celular rigid, alcătuit din peptidoglican (la bacterii).
+                <br>•	Capsulă: Unele bacterii au și o capsulă protectoare în jurul peretelui celular.
+                <br>•	Flageli / Pili: Pot avea structuri pentru mișcare (flageli) sau pentru atașare și transfer de material genetic (pili).
+                <br>•	Dimensiuni: Sunt foarte mici, în general între 0,1 și 5 micrometri.
+               <br> Exemple: Escherichia coli, Streptococcus, Archaea methanogene.</p>
+                
+            <p><span class="right-align">Majoritatea</span> ADN-ului procariot se află într-o regiune centrală a celulei numită nucleoid și constă, de obicei, dintr-o singură buclă mare numită cromozom circular. Nucleoidul și alte caracteristici frecvent întâlnite ale procariotelor sunt prezentate în diagrama de mai jos, care ilustrează secțiunea transversală a unei bacterii în formă de bastonaș.</p>
+                
+            <p><span class="right-align">Bacteriile</span> au adesea o reputație proastă: sunt descrise ca „paraziți" care cauzează boli. Deși unele tipuri de bacterii cauzează boli (după cum știi dacă ți s-au prescris vreodată antibiotice), multe altele sunt inofensive sau chiar benefice.
+            <span class="right-align">Bacteriile</span> sunt clasificate ca procariote, împreună cu un alt grup de organisme unicelulare, arheele. Procariotele sunt mici, dar, într-un sens foarte real, domină Pământul. Ele trăiesc aproape peste tot, pe fiecare suprafață, pe uscat, în apă și chiar în interiorul corpului nostru.</p>
+        </div>
+        
+        <!-- Ce sunt procariotele -->
+        <div class="content-card">
+            <h3 class="section-title">Ce sunt procariotele?</h3>
+            
+            <p><span class="right-align">Procariotele</span> sunt organisme microscopice care aparțin domeniilor Bacteria și Archaea, două dintre cele trei domenii majore ale vieții. (Eukarya, al treilea, conține toate eucariotele, inclusiv animale, plante și fungi.) Bacteriile și arheele sunt unicelulare, în timp ce majoritatea eucariotelor sunt multicelulare.
+            Fosilele ne arată că procariotele erau deja aici pe Pământ acum miliarde de ani, iar oamenii de știință cred că strămoșii procarioți au dat naștere tuturor formelor de viață prezente astăzi pe Pământ.</p>
+            
+            <h3 class="section-title">Componentele Principale ale Celulei Procariote:</h3>
+            
+            <div class="image-placeholder"></div>
+        </div>
+        
+        <!-- Capsula -->
+        <div class="content-card">
+            <h3 class="section-title">Capsula:</h3>
+            
+            <p><span class="right-align">Multe</span> procariote au un strat exterior lipicios numit capsulă, care, de obicei, este alcătuit din polizaharide (polimeri de glucide).
+            Capsula ajută la agățarea procariotelor unele de altele și pe diferite suprafețe din mediul acestora, prevenind, de asemenea, uscarea celulei. În cazul procariotelor cauzatoare de boală, care au colonizat corpul unui organism gazdă, capsula sau stratul vâscos le poate proteja, de asemenea, de sistemul imunitar al gazdei.</p>
+        </div>
+        
+        <!-- Peretele celular -->
+        <div class="content-card">
+            <h3 class="section-title">Peretele celular:</h3>
+            
+            <p><span class="right-align">Toate</span> celulele procariote au un perete celular rigid, localizat sub capsulă (dacă există). Această structură menține forma celulei, protejează interiorul celulei și previne spargerea celulei atunci când aceasta absoarbe apă.
+            Peretele celular al majorității bacteriilor conține peptidoglican, un polimer de zaharuri legate și polipeptide. Peptidoglicanul este neobișnuit, deoarece conține nu numai aminoacizi L, tipul utilizat în mod normal pentru producerea de proteine, dar și aminoacizii D („imaginea în oglindă" a aminoacizilor L). Pereții celulari ai arheelor nu conțin peptidoglican, dar unii includ o moleculă similară numită pseudopeptoglican, în timp ce alții sunt compuși din proteine sau alte tipuri de polimeri</p>
+            
+            <div class="title-container">
+                <h3 class="section-centered">Structura Peretelui și Membranei Celulare:</h3>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="content-box" style="display: none;">
+               <div class="image-placeholder"></div>
+            </div>
+        </div>
+        
+        <!-- Membrana celulară -->
+        <div class="content-card">
+            <h3 class="section-title">Membrana celulară (Plasmalemă sau Membrană citoplasmatică):</h3>
+            
+            <p><span class="right-align">Sub</span> peretele celular se află membrana celulară. Elementul fundamental al membranei celulare este fosfolipida, o lipidă compusă dintr-o moleculă de glicerol fixată de un cap de fosfat hidrofil (care atrage apă) și de două cozi hidrofobe (care resping apa) de acizi grași. Fosfolipidele unei membrane eucariotice sau bacteriene sunt organizate în două straturi, formând o structură numită dublu strat fosfolipidic.</p>
+            
+            <p><span class="right-align">Membranele</span> celulare ale arheelor au câteva proprietăți unice, diferite de cele ale bacteriilor și eucariotelor. De exemplu, la unele specii, cozile fosfolipidice opuse sunt unite într-o singură coadă, formând un strat simplu în loc de un strat dublu (după cum este arătat mai jos). Această modificare poate stabiliza membrana la temperaturi ridicate, permițându-le arheelor să trăiască fericite în izvoare termale.</p>
+            
+            <div class="image-placeholder"></div>
+        </div>
+        
+        <!-- Anexe celulare -->
+        <div class="content-card">
+            <h3 class="section-title">Anexele:</h3>
+            
+            <p><span class="right-align">Celulele</span> procariote au adesea anexe (proeminențe de pe suprafața celulei) care le permit celulelor să se lipească de suprafețe, să se deplaseze sau să transfere ADN-ul în alte celule.
+            Filamente subțiri numite fimbrii (singular: fimbrie), precum cele prezentate în imaginea de mai jos, sunt folosite pentru aderență – adică ajută celulele să se fixeze pe obiectele și pe suprafețele din mediu lor.</p>
+            
+            <p><span class="right-align">Anexele</span> mai lungi, numite pili (singular: pil), sunt de mai multe tipuri care au roluri diferite. De exemplu, un pil sexual ține două celule bacteriene laolaltă și permite transferul ADN-ului între ele, într-un proces numit conjugare. O altă clasă de pili bacterieni, numiți pili de tip IV, ajută bacteria să se miște în mediul său</p>
+            
+            <div class="image-placeholder"></div>
+            
+            <div class="title-container">
+                <h3 class="section-centered">Observarea Microscopică a Anexelor:</h3>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="content-box" style="display: none;">
+                <div class="image-placeholder"></div>
+            </div>
+            
+            <p><span class="right-align">Cu</span> toate acestea, cele mai comune anexe utilizate pentru a se mișca sunt flagelii (singular: flagel). Aceste structuri asemănătoare cozii se învârt ca o elice pentru a deplasa celulele prin medii apoase.</p>
+        </div>
+        
+        <!-- Cromozomii și plasmidele -->
+        <div class="content-card">
+            <h3 class="section-title">Cromozomii și plasmidele:</h3>
+            
+            <p><span class="right-align">Majoritatea</span> procariotelor au un singur cromozom circular și, astfel, o singură copie a materialului genetic. Pe de altă parte, la fel ca oamenii, eucariotele tind să aibă mai mulți cromozomi în formă de tijă și două copii ale materialului genetic (pe cromozomii omologi.</p>
+            
+            <p><span class="right-align">Prin</span> definiție, procariotele nu au un nucleu delimitat de membrană pentru a-și ține cromozomii. În schimb, cromozomul unei procariote este se găsește într-o parte a citoplasmei numită nucleoid.</p>
+            
+            <div class="image-placeholder"></div>
+            
+            <p><span class="right-align">Pe</span> lângă cromozom, multe procariote au plasmide, care sunt mici inele de ADN extra-cromozomial („în afara cromozomului") dublu catenar. Plasmidele poartă un număr mic de gene neesențiale și sunt copiate independent de cromozomul din interiorul celulei. Ele pot fi transferate către alte procariote dintr-o populație, uneori răspândind gene benefice pentru supraviețuire.</p>
+            
+            <p><span class="right-align">De</span> exemplu, unele plasmide transportă gene care fac bacteriile rezistente la antibiotice. (Aceste gene se numesc gene R.) Când plasmidele care transportă genele R sunt schimbate într-o populație, acestea pot produce rapid rezistența populației la antibiotice. Deși este benefic pentru bacterii, acest proces poate îngreuna tratarea de către medici a infecțiilor bacteriene dăunătoare.</p>
+        </div>
+        
+        <!-- Tilacoizii și mezozomii -->
+        <div class="content-card">
+            <h3 class="section-title">Tilacoizii și mezozomii</h3>
+            
+            <p><span class="right-align">Tilacoizii</span> și mezozomii sunt structuri intracelulare importante în celulele procariote, fiecare având funcții distincte.</p>
+            
+            <p><b>• Tilacoizii:</b></p>
+            
+            <p><span class="right-align">Tilacoizii</span> sunt structuri membranare întâlnite în cianobacterii, un tip de procariote care efectuează fotosinteza. Aceste structuri sunt asemănătoare cu tilacoizii din cloroplastele eucariotelor, dar în cazul cianobacteriilor, ele sunt formate din plieri ale membranei interne. Tilacoizii conțin pigmenți fotosintetici, cum ar fi <span class="highlight">clorofila</span> și <span class="highlight">ficobiliproteinele</span>, care captează energia luminii și permit bacteriilor să producă oxigen și substanțe organice din dioxid de carbon și apă.</p>
+            
+            <p><b>• Mezozomii:</b></p>
+            
+            <p><span class="right-align">Mezozomii</span> sunt structuri invaginate ale membranei plasmatice, observate inițial la bacterii Gram-pozitive. Deși au fost interpretați mult timp ca având roluri funcționale (implicate în respirația celulară, diviziunea celulară sau procesarea materialului genetic), cercetările mai recente sugerează că ar putea fi artefacte ale preparării celulelor pentru microscopie electronică. Cu toate acestea, în cazul unor bacterii, structurile asemănătoare mezozomilor par a fi implicate în <span class="highlight">producerea de energie</span> prin procesul de respirație celulară, servind drept punct de ancorare pentru enzimele implicate în metabolismul respirator.</p>
+            
+            <div class="image-placeholder"></div>
+            
+            <h3 class="section-title">Importanțe Practice</h3>
+            
+            <div class="title-container">
+                <h3 class="section-centered">Influențele celulelor procariote în medicină:</h3>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="content-box" style="display: none;">
+                <p><b>• Influențe pozitive:</b></p>
+                <p><b>Producția de antibiotice:</b> Unele bacterii produc compuși naturali care luptă împotriva infecțiilor bacteriene, cum ar fi penicilina, produsă de Penicillium (o ciupercă legată de bacterii).</p>
+                <p><b>Probiotice:</b> Bacteriile benefice, precum Lactobacillus și Bifidobacterium, ajută la menținerea sănătății sistemului digestiv și reduc riscul de boli.</p>
+                <p><b>Producția de medicamente:</b> Prin biotehnologie, bacteriile sunt utilizate pentru a produce substanțe terapeutice, cum ar fi insulina recombinantă.</p>
+                <p><b>Dezvoltarea vaccinurilor:</b> Bacterii modificate sunt folosite pentru crearea de vaccinuri eficiente împotriva unor boli, cum ar fi tuberculoza.</p>
+                <p><b>Studierea geneticii:</b> Celulele procariote servesc ca modele simple pentru înțelegerea funcționării genetice și celulare.</p>
+                <br>
+                <p><b>• Influențe negative:</b></p>
+                <p><b>Boli infecțioase: </b>Anumite bacterii patogene, cum ar fi Salmonella, Escherichia coli sau Mycobacterium tuberculosis, provoacă boli care pot fi grave sau chiar fatale.</p>
+                <p><b>Rezistența la antibiotice: </b>Utilizarea excesivă a antibioticelor a dus la apariția bacteriilor rezistente, cum ar fi MRSA (Staphylococcus aureus rezistent la meticilină).</p>
+                <p><b>Intoxicații alimentare: </b>Unele bacterii, precum Clostridium botulinum, produc toxine periculoase care pot provoca intoxicații severe.</p>
+                <p><b>Răspândirea bolilor: </b>Proliferarea rapidă a bacteriilor patogene poate duce la epidemii globale, cum ar fi ciuma bubonică din trecut, cauzată de Yersinia pestis.</p>
+            </div>
+        </div>
+        
+        <!-- Celulele eucariote -->
+        <div class="content-card">
+            <h3 class="section-title">Celulele Eucariote</h3>
+            
+            <div class="subsection-title">EUCARIOT (eu=adevărat; karion=nucleu).</div>
+            <br>
+            <p><span class="right-align">Celulele</span> eucariote sunt unități fundamentale ale vieții și se caracterizează printr-o structură complexă, ceea ce le deosebește de celulele procariote.</p>
+            
+            <h3 class="subsection-title">Particularitățile celulei eucariote:</h3>
+            <br>
+            <p><b>• Nucleu individualizat: </b>Celulele eucariote au un nucleu bine definit, înconjurat de o membrană nucleară dublă, care protejează materialul genetic (ADN).</p>
+            <p><b>• Volum și suprafață mai mari: </b>La celulele eucariote, volumul și suprafața de schimb cresc odată cu maturizarea. Celulele tinere sunt mai mici, iar cele mature acumulează, în timp, substanțe toxice.</p>
+            <p><b>• Compartimentare internă avansată: </b>Față de procariote, celulele eucariote au o organizare internă mai complexă, cu compartimente specializate pentru diverse funcții.</p>
+            <p><b>• Organite celulare specializate: </b>- Fiecare organit din celulă are o funcție bine definită. Exemple includ mitocondriile (produc energie) și cloroplastele (realizează fotosinteza în celulele vegetale).</p>
+            <p><b>• Citomembrane: </b>Totalitatea membranelor din celulă poartă acest nume, incluzând membrana celulară și membranele organitelor.</p>
+            <p><b>• Diviziunea celulară: </b>În celulele eucariote, diviziunea are loc prin două procese:</p>
+            <div class="poza-patru"><p><b>- Mitoza: </b>Pentru creștere și regenerare.</p></div>
+            <div class="poza-patru"><p><b>- Meioza: </b>Pentru formarea celulelor reproducătoare (gametii).</p></div>
+            <br>
+            <h3 class="section-title">Structura Celulei Eucariote</h3>
+            
+            <p><span class="right-align">Deși</span> celulele din plante, animale și ciuperci sunt eucariote și prezintă structuri comune, ele au și particularități diferite, adaptate funcțiilor specifice ale fiecărui regn. Iată câteva aspecte distincte:</p>
+            <br>
+            <div class="title-container">
+                <h3 class="section-centered">Celule Animale:</h3>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="content-box" style="display: none;">
+                <p><b>• Membrană plasmatică flexibilă: </b>Celulele animale nu dispun de perete celular, ci doar de o membrană plasmatică flexibilă, care le permite să varieze rapid forma și să interacționeze dinamic cu mediul înconjurător.</p>
+                <p><b>• Centrioli și diviziune celulară: </b>Prezența centriolilor este specifică celulelor animale și joacă un rol esențial în organizarea fusului mitotic în timpul diviziunii celulare.</p>
+                <p><b>• Lizozomi: </b>Aceste organite sunt implicate în digestia intracelulară și reciclarea componentelor celulare, contribuind la menținerea sănătății interne a celulei.</p>
+                <p><b>• Joncțiuni celulare specifice: </b>Aceste organite sunt implicate în digestia intracelulară și reciclarea componentelor celulare, contribuind la menținerea sănătății interne a celulei.</p>
+                <div class="image-placeholder"></div>
+            </div>
+            <br>
+            <div class="title-container">
+                <h3 class="section-centered">Celulele Vegetale:</h3>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="content-box" style="display: none;">
+                <p><b>• Perete celular din celuloză: </b>Prezența unui perete celular rigid, alcătuit din celuloză, oferă celulelor vegetale un suport structural necesar, asigurând rezistență mecanică și fixitatea formei.</p>
+                <p><b>• Cloroplaste pentru fotosinteză: </b>Cloroplastele, care conțin clorofilă, le permit celulelor vegetale să capteze energia solară și să efectueze fotosinteza, transformând lumina în energie chimică.</p>
+                <p><b>• Vacuolă centrală mare: </b>O vaculă centrală impunătoare contribuie la menținerea turgorului, depozitarea apei, a substanțelor nutritive și a deșeurilor, fiind esențială pentru echilibrul osmotic al celulei.</p>
+                <p><b>• Plasmodesme: </b>Aceste canale intercelulare facilitează schimbul de substanțe și semnale între celulele adiacente, coordonând activitățile țesuturilor.</p> 
+                <div class="image-placeholder"></div>
+            </div>
+            <br>
+            <div class="title-container">
+                <h3 class="section-centered">Celulele Fungale:</h3>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="content-box" style="display: none;">
+                <p><b>• Perete celular din chitină: </b> Celulele fungale au un perete celular compus din chitină, care le oferă o rezistență elastică, diferită de rigiditatea dată de celuloză în plante.</p>
+                <p><b>• Nutriție prin digestie extracelulară: </b>Fungi se hrănesc prin secreția de enzime extracelulare, care descompun materia organică în molecule absorbabile, adaptându-se astfel diverselor medii.</p>
+                <p><b>• Structură filamentară: </b>Celulele fungale se organizează adesea în hife, care formează un miceliu vast. Această structură permite o explorare eficientă a mediului și extracția nutrienților din surse variate.</p>
+                <p><b>• Vacule în dimensiuni reduse: </b>Deși vaculele fungale pot fi mai mici decât cele din celulele vegetale, ele contribuie la reglarea echilibrului osmotic și la depozitarea anumitor substanțe.</p>
+                <div class="image-placeholder"></div>
+            </div>
+            <br>
+            <p><span class="right-align">Fiecare</span> componentă a unei celule eucariote, comune sau specifice, este explicată detaliat în fiecare pagină pe care o accesați de aici:</p>
+            <div id="sectiunea_dorita"></div>
+            <h4 class="subsection-title">A) Componentele protoplasmatice:</h4>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Membrana Celulară și Citoplasma</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Nucleuri și Ribozomii</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Sistemul de citomembrane (Reticulul endoplasmatic, Apartul Golgi, Lizozomii)</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Mitocondriile și plastidele</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Centrul celular și citoscheletul</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Componente specifice (Prelungiri celulare, Corpusculul Nissl, Miofibrile)</a></div>
+            <h4 class="subsection-title">B) Componente neprotoplasmatice (specifice plantelor):</h4>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Peretele celular, Vacuola și Incluziunile ergastice</a></div>
+        </div>
+        
+        <!-- Înmulțirea celulelor -->
+        <div class="content-card">
+            <h3 class="section-title">Înmulțirea celulelor</h3>
+            
+            <p><span class="right-align">Înmulțirea</span> este un proces esențial al materiei vii, asigurând perpetuarea acesteia. Celulele se multiplică prin diviziune, un proces care este precedat de o fază de creștere, în care acestea își măresc dimensiunea și își pregătesc materialul necesar pentru replicare. Diviziunea celulară începe cu separarea nucleului(cariokineza) urmată de distribuirea componentelor celulare, iar în final, are loc diviziunea plasmei. Aceasta se încheie prin formarea unui perete despărțitor care delimitează două celule-fiice identice din punct de vedere genetic.</p>
+            
+            <p><span class="right-align">Diviziunea</span> celulară este o etapă a ciclului celular și se desfășoară în două mari faze: diviziunea propriu-zisă și interfaza.</p>
+        </div>
+        
+        <!-- Cromozomii -->
+        <div class="content-card">
+            <h3 class="section-title">Cromozomii:</h3>
+            
+            <p><span class="right-align">Există</span> două categorii fundamentale de cromozomi:</p>
+            
+            <h4 class="subsection-title">Structura cromozomilor eucarioți:</h4>
+            
+            <p><span class="right-align">Un</span> cromozom eucariot este compus din două elemente fibrilare, numite cromatide sau cromatide surori, care sunt omoloage din punct de vedere morfologic, biochimic, genetic și funcțional. Fiecare cromatidă este copia celeilalte.</p>
+            
+            <p><span class="right-align">Cromatidele</span> sunt unite printr-o regiune specifică numită centromer, care împarte cromozomul în două secțiuni numite brațe, acestea putând fi egale sau inegale ca lungime.</p>
+            
+            <p><span class="right-align">Setul</span> complet de cromozomi, caracteristic unei anumite specii, se numește cariotip, iar pe acești cromozomi se află genele care stochează informația genetică.</p>
+            
+            <h4 class="subsection-title">Clasificarea celulelor după numărul de cromozomi:</h4>
+            
+            <p><span class="right-align">Fusul</span> de diviziune, format din structuri interne ale centrului celular, este activ doar în timpul diviziunii nucleare, asigurând distribuirea corectă a cromozomilor între celulele fiice.</p>
+        </div>
+        
+        <!-- Diviziunea amitotică -->
+        <div class="content-card">
+            <h3 class="section-title">Diviziunea amitotică</h3>
+            
+            <p><span class="right-align">Diviziunea</span> amitotică este un proces de multiplicare celulară caracterizat prin absența fusului de diviziune și a cromozomilor evidențiați, menținând integritatea învelișului nuclear pe tot parcursul procesului. Aceasta este întâlnită la procariote, celule aflate în proces de regenerare, în țesuturile canceroase, în gale, leucocite și alte structuri biologice.</p>
+            
+            <h4 class="subsection-title">Mecanisme ale amitozei:</h4>
+            
+            <p><span class="right-align">Amitoza</span> poate avea loc prin strangulare (gâtuire) sau clivare (despicare), fiecare dintre aceste procese determinând divizarea celulară în mod distinct.</p>
+            
+            <p><span class="right-align">În</span> zona mediană a celulei apare o strangulare datorată invaginării membranei, urmată de modificări la nivelul peretelui celular și al nucleului. La final, celula-mamă se divide, generând două celule-fiice de dimensiuni apropiate sau inegale. Un fenomen similar este observat la drojdia de bere, care se multiplică prin înmugurire.</p>
+            
+            <p><span class="right-align">În</span> această formă de diviziune, nucleul și celula sunt despicate de-a lungul unei axe transversale sau longitudinale, proces determinat de formarea unei fantă la nivelul membranei plasmatice și al peretelui celular. Ca rezultat, apar două celule-fiice identice, un exemplu fiind alga verde Pleurococcus.</p>
+            
+            <div class="image-placeholder"></div>
+            
+            <p><span class="right-align">După</span> locul și modul de desfășurare, cariochineza se clasifică în două tipuri principale: diviziunea mitotică (somatică) și diviziunea meiotică (reductională).</p>
+        </div>
+        
+        <!-- Mitoza -->
+        <div class="content-card">
+            <h3 class="section-title">Mitoza</h3>
+            
+            <p><span class="right-align">Mitoza</span> se produce în toate celulele somatice și conduce la formarea organelor prin generarea de celule identice. De exemplu, o celulă-mamă diploidă (2n), precum cea din secară care are 14 cromozomi, intră în diviziune mitotică și generează două celule-fiice diploide, fiecare păstrând același număr de cromozomi (2n = 14).</p>
+            
+            <p><span class="right-align">Datorită</span> modificărilor suferite de cromozomi pe parcursul acestui proces, mitoza se împarte în patru etape distincte:</p>
+            
+            <p><span class="right-align">Între</span> două diviziuni succesive are loc perioada numită interfază. În această etapă, nucleul capătă un aspect granulo-reticulat, iar cantitatea de ADN se dublează, ceea ce este esențial pentru distribuirea uniformă și identică a materialului genetic către celulele-fiice.</p>
+            
+            <h4 class="subsection-title">1. Profaza</h4>
+            
+            <p><span class="right-align">În</span> această etapă, învelișul nuclear și nucleolii încep să se dezorganizeze, iar cromozomii devin individualizați. Se formează fusul de diviziune, iar cromozomii bicromatidici, compuși din două cromatide, migrează către zona centrală a celulei. Aceștia sunt atașați de firele fusului de diviziune prin centromer.</p>
+            
+            <h4 class="subsection-title">2. Metafaza:</h4>
+            
+            <p><span class="right-align">Cromozomii</span> bicromatidici ating nivelul maxim de spiralizare și se fixează de firele fusului de diviziune. Aceștia se aliniază în planul ecuatorial, formând structura numită placa ecuatorială.</p>
+            
+            <h4 class="subsection-title">3. Anafaza:</h4>
+            
+            <p><span class="right-align">În</span> această etapă, cromozomii monocromatidici, rezultați prin separarea cromatidelor, sunt trași aproape simultan către polii opuși ai celulei de către firele fusului de diviziune. Acest proces asigură distribuția egală a materialului genetic în celulele-fiice.</p>
+            
+            <h4 class="subsection-title">4. Telofaza:</h4>
+            
+            <p><span class="right-align">Ajunși</span> la polii fusului, cromozomii monocromatidici încep să se despiralizeze și să refacă structura specifică nucleului în interfază. Fusul de diviziune dispare, iar nucleolii și învelișul nuclear se reorganizează, conducând la formarea celor două nuclee-fiice, identice din punct de vedere genetic cu celula-mamă. Simultan, se formează peretele despărțitor, care separă celula-mamă în două celule-fiice diploide.</p>
+            
+            <div class="image-placeholder"></div>
+        </div>
+        
+        <!-- Meioza -->
+        <div class="content-card">
+            <h3 class="section-title">Meioza</h3>
+            
+            <p><span class="right-align">Meioza</span> este un tip special de diviziune celulară care are loc în celulele-mamă ale sporilor la unele organisme vegetale, precum și în formarea celulelor reproducătoare numite gameți. Acest proces asigură menținerea constantă a numărului de cromozomi la nivelul speciei.</p>
+            
+            <p><span class="right-align">Prin</span> meioză, o celulă diploidă (2n = 4) se divide, generând patru celule haploide (n = 2). Ulterior, prin fecundație, două celule haploide se contopesc, formând zigotul diploid, ceea ce permite perpetuarea echilibrului cromozomial al speciei.</p>
+            
+            <p><span class="right-align">Meioza</span> se desfășoară în două etape principale:</p>
+            
+            <ol>
+                <li><strong>Diviziunea reductională (heterotipică)</strong> – prima etapă, în care se reduce numărul de cromozomi la jumătate</li>
+                <li><strong>Diviziunea ecvațională (homeotipică) sau diviziunea de maturare</strong> - a doua etapă, în care fiecare celulă haploidă nou formată își păstrează numărul de cromozomi.</li>
+            </ol>
+            
+            <p><span class="right-align">Între</span> cele două diviziuni succesive există o interfază scurtă, unde celulele se pregătesc pentru finalizarea procesului.</p>
+            
+            <div class="image-placeholder"></div>
+            
+            <h3 class="subsection-title">Etapa reducțională (I) a meiozei</h3>
+            
+            <p>Etapa reducțională (I) a meiozei se desfășoară în patru faze distincte:</p>
+            <br>
+            <p><b>1. Profaza 1</b></p>
+            <p>Inițial, cromozomii se prezintă sub forma unor filamente subțiri, slab spiralate. Pe parcurs, ei se scurtează și se împerechează doi câte doi cu omologii lor, formând <b>bivalente de origine duală (paternă și maternă)</b>. În această etapă poate interveni și procesul de <b>crossing-over, o recombinare genetică intracromozomială</b> care generează gameti recombinați. Profaza I se încheie odată cu dispariția învelișului nuclear și a nucleolilor, concomitent cu apariția fusului de diviziune.</p>
+            <br>
+            <p><b>2. Metafaza 1</b></p>
+            <p>Bivalentele se dispun pe firele fusului de diviziune, aranjându-se în <b>planul ecuatorial</b>. Fiecare bivalent, format din patru cromatide, este denumit și <b>tetradă cromozomială</b>.</p>
+            <br>
+            <p><b>3. Anafaza 1</b></p>
+            <p>În timpul acestei faze, cromozomii se deplasează din placa ecuatorială <b>către cei doi poli</b> ai celulei. Ei apar ca entități bicromatidice, având deja efectuat schimbul de informație genetică în etapa de crossing-over din profaza I.</p>
+            <br>
+            <p><b>4. Telofaza 1</b></p>
+            <p>Aceasta se caracterizează prin formarea a două celule-fiice, fiecare având un nucleu ce conține un <b>număr redus la jumătate de cromozomi</b> <b>(n = 2)</b> comparativ cu celula-mamă (2n = 4).</p>
+            
+            <div class="image-placeholder"></div>
+            
+            <h3 class="subsection-title">Etapa ecvațională (II) a meiozei</h3>
+            
+            <p>Etapa ecvațională se desfășoară similar unei mitoze obișnuite. Cele <b>două celule-fiice</b> rezultate din etapa reducțională intră într-o <b>interfază scurtă (II)</b>, după care trec prin cele <b>patru faze</b> specifice diviziunii celulare:</p>
+            <br>
+            <p><b>- Profaza II</b> – cromozomii se condensează și se formează fusul de diviziune.</p>
+            <p><b>- Metafaza II</b> – cromozomii se aliniază pe placa ecuatorială.</p>
+            <p><b>- Anafaza II</b> – cromatidele surori se separă și migrează spre polii opuși ai celulei.</p>
+            <p><b>- Telofaza II</b> – nucleele se reorganizează, iar citoplasma se divide, rezultând celule independente.</p>
+            <br>
+            <p>La finalul acestui proces, iau naștere <b>patru celule haploide (n = 2)</b>. În funcție de organism, acestea se transformă fie în <b>spori</b> (celule asexuate), fie în <b>gameți</b> (celule sexuate), esențiale pentru reproducerea și perpetuarea speciilor.</p>
+            
+            <div class="image-placeholder"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selectează toate butoanele de expandare
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            
+            // Adaugă un event listener pentru fiecare buton
+            toggleBtns.forEach(function(btn, index) {
+                // Dă fiecărui set de elemente un ID unic
+                const contentId = 'content-box-' + index;
+                
+                // Obține caseta de conținut corespunzătoare
+                const contentBox = btn.closest('.title-container').nextElementSibling;
+                
+                // Adaugă ID la caseta de conținut
+                contentBox.id = contentId;
+                
+                // Adaugă evenimentul de click
+                btn.addEventListener('click', function() {
+                    const targetBox = document.getElementById(contentId);
+                    
+                    if (targetBox.style.display === 'none') {
+                        targetBox.style.display = 'block';
+                        btn.textContent = '−';
+                    } else {
+                        targetBox.style.display = 'none';
+                        btn.textContent = '+';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
