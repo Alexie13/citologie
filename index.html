@@ -89,6 +89,7 @@
             text-transform: uppercase;
             min-width: 100px;
             text-align: center;
+            z-index: 15;
         }
 
         .home-button:hover {
@@ -312,11 +313,12 @@
         @media (max-width: 768px) {
             .logo h1 {
                 font-size: 1.3rem;
+                padding-left: 80px; /* Adăugat spațiu pentru buton */
             }
             
             .home-button {
                 left: 10px;
-                min-width: 90px;
+                min-width: 70px;
                 padding: 5px 10px;
                 font-size: 0.8rem;
             }
@@ -346,6 +348,7 @@
             
             .logo h1 {
                 font-size: 1.1rem;
+                padding-left: 60px; /* Ajustat pentru ecrane mai mici */
             }
             
             .logo svg {
@@ -355,7 +358,7 @@
             
             .home-button {
                 left: 5px;
-                min-width: 70px;
+                min-width: 50px;
                 padding: 4px 8px;
                 font-size: 0.7rem;
             }
@@ -389,13 +392,17 @@
             }
         }
 
+        /* Header pentru versiunea mobilă */
         @media (max-width: 360px) {
             header {
                 height: 50px;
+                padding: 0 10px;
             }
             
             .logo h1 {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                padding-left: 50px; /* Ajustat pentru ecrane foarte mici */
+                white-space: nowrap;
             }
             
             .logo svg {
@@ -404,7 +411,13 @@
             }
             
             .home-button {
-                min-width: 60px;
+                min-width: 40px;
+                padding: 3px 6px;
+                font-size: 0.6rem;
+            }
+            
+            .home-button i {
+                font-size: 0.7rem;
             }
             
             .main-content {
@@ -435,7 +448,7 @@
     
     <!-- Header -->
     <header>
-        <a href="https://alexie13.github.io/biogenius-academy/" class="home-button"><i class="fas fa-home"></i> Acasă</a>
+        <a href="#" class="home-button"><i class="fas fa-home"></i> Acasă</a>
         <div class="logo">
             <svg width="40" height="40" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="#00e6c0" stroke-width="2" />
