@@ -64,7 +64,7 @@
             letter-spacing: 1px;
         }
 
-        /* Buton Acasă - Doar iconița */
+        /* Buton Acasă - Design îmbunătățit și centrat */
         .home-button {
             position: absolute;
             left: 20px;
@@ -73,8 +73,8 @@
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: var(--dark-color);
             border: none;
-            padding: 8px;
-            border-radius: 50%;
+            padding: 6px 15px;
+            border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -82,16 +82,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(0, 230, 192, 0.3);
-            min-width: unset;
-            width: 40px;
-            height: 40px;
+            text-transform: uppercase;
+            min-width: 100px;
             text-align: center;
-            z-index: 15;
         }
 
         .home-button:hover {
-            transform: translateY(calc(-50% - 3px)) scale(1.1);
+            transform: translateY(calc(-50% - 3px)) scale(1.05);
             box-shadow: 0 6px 20px rgba(0, 230, 192, 0.5);
         }
 
@@ -100,7 +101,7 @@
         }
 
         .home-button i {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         /* Main Content Styles */
@@ -204,7 +205,7 @@
         /* Spațiu pentru imagini */
         .image-placeholder {
             width: 100%;
-            height: 300px;
+            height: 100%;
             background-color: var(--card-background);
             border: 2px dashed var(--primary-color);
             display: flex;
@@ -215,7 +216,6 @@
         }
 
         .image-placeholder::before {
-            content: "Spațiu pentru imagine";
             color: var(--primary-color);
             font-weight: bold;
         }
@@ -311,17 +311,13 @@
         @media (max-width: 768px) {
             .logo h1 {
                 font-size: 1.3rem;
-                padding-left: 50px; /* Redus spațiul pentru iconița home */
             }
             
             .home-button {
                 left: 10px;
-                width: 35px;
-                height: 35px;
-            }
-            
-            .home-button i {
-                font-size: 1rem;
+                min-width: 90px;
+                padding: 5px 10px;
+                font-size: 0.8rem;
             }
             
             .page-title {
@@ -349,7 +345,6 @@
             
             .logo h1 {
                 font-size: 1.1rem;
-                padding-left: 40px; /* Redus spațiul pentru iconița home */
             }
             
             .logo svg {
@@ -359,9 +354,9 @@
             
             .home-button {
                 left: 5px;
-                width: 30px;
-                height: 30px;
-                padding: 6px;
+                min-width: 70px;
+                padding: 4px 8px;
+                font-size: 0.7rem;
             }
             
             .home-button i {
@@ -393,17 +388,13 @@
             }
         }
 
-        /* Header pentru versiunea mobilă */
         @media (max-width: 360px) {
             header {
                 height: 50px;
-                padding: 0 10px;
             }
             
             .logo h1 {
-                font-size: 0.9rem;
-                padding-left: 35px; /* Redus spațiul pentru iconița home */
-                white-space: nowrap;
+                font-size: 1rem;
             }
             
             .logo svg {
@@ -412,13 +403,7 @@
             }
             
             .home-button {
-                width: 26px;
-                height: 26px;
-                padding: 5px;
-            }
-            
-            .home-button i {
-                font-size: 0.7rem;
+                min-width: 60px;
             }
             
             .main-content {
@@ -449,7 +434,7 @@
     
     <!-- Header -->
     <header>
-        <a href="https://alexie13.github.io/biogenius-academy/" class="home-button"><i class="fas fa-home"></i></a>
+        <a href="https://alexie13.github.io/biogenius-academy/" class="home-button"><i class="fas fa-home"></i> Acasă</a>
         <div class="logo">
             <svg width="40" height="40" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="#00e6c0" stroke-width="2" />
@@ -499,7 +484,7 @@
             
             <h3 class="section-title">Componentele Principale ale Celulei Procariote:</h3>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="imagine-procariota.jpeg" width="100%" height="100%"></div>
         </div>
         
         <!-- Capsula -->
@@ -522,7 +507,7 @@
                 <button class="toggle-btn">+</button>
             </div>
             <div class="content-box" style="display: none;">
-               <div class="image-placeholder"></div>
+               <div class="image-placeholder"><img src="perete-celular.jpeg" width="100%" height="100%"></div>
             </div>
         </div>
         
@@ -534,7 +519,7 @@
             
             <p><span class="right-align">Membranele</span> celulare ale arheelor au câteva proprietăți unice, diferite de cele ale bacteriilor și eucariotelor. De exemplu, la unele specii, cozile fosfolipidice opuse sunt unite într-o singură coadă, formând un strat simplu în loc de un strat dublu (după cum este arătat mai jos). Această modificare poate stabiliza membrana la temperaturi ridicate, permițându-le arheelor să trăiască fericite în izvoare termale.</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="bacterii.jpeg" width="100%" height="100%"></div>
         </div>
         
         <!-- Anexe celulare -->
@@ -546,14 +531,14 @@
             
             <p><span class="right-align">Anexele</span> mai lungi, numite pili (singular: pil), sunt de mai multe tipuri care au roluri diferite. De exemplu, un pil sexual ține două celule bacteriene laolaltă și permite transferul ADN-ului între ele, într-un proces numit conjugare. O altă clasă de pili bacterieni, numiți pili de tip IV, ajută bacteria să se miște în mediul său</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="sex-pilus.jpeg" width="100%" height="100%"></div>
             
             <div class="title-container">
                 <h3 class="section-centered">Observarea Microscopică a Anexelor:</h3>
                 <button class="toggle-btn">+</button>
             </div>
             <div class="content-box" style="display: none;">
-                <div class="image-placeholder"></div>
+                <div class="image-placeholder"><img src="paduche.jpeg" width="100%" height="100%"></div>
             </div>
             
             <p><span class="right-align">Cu</span> toate acestea, cele mai comune anexe utilizate pentru a se mișca sunt flagelii (singular: flagel). Aceste structuri asemănătoare cozii se învârt ca o elice pentru a deplasa celulele prin medii apoase.</p>
@@ -567,7 +552,7 @@
             
             <p><span class="right-align">Prin</span> definiție, procariotele nu au un nucleu delimitat de membrană pentru a-și ține cromozomii. În schimb, cromozomul unei procariote este se găsește într-o parte a citoplasmei numită nucleoid.</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="adn-procariota.jpeg" width="100%" height="100%"></div>
             
             <p><span class="right-align">Pe</span> lângă cromozom, multe procariote au plasmide, care sunt mici inele de ADN extra-cromozomial („în afara cromozomului") dublu catenar. Plasmidele poartă un număr mic de gene neesențiale și sunt copiate independent de cromozomul din interiorul celulei. Ele pot fi transferate către alte procariote dintr-o populație, uneori răspândind gene benefice pentru supraviețuire.</p>
             
@@ -588,7 +573,7 @@
             
             <p><span class="right-align">Mezozomii</span> sunt structuri invaginate ale membranei plasmatice, observate inițial la bacterii Gram-pozitive. Deși au fost interpretați mult timp ca având roluri funcționale (implicate în respirația celulară, diviziunea celulară sau procesarea materialului genetic), cercetările mai recente sugerează că ar putea fi artefacte ale preparării celulelor pentru microscopie electronică. Cu toate acestea, în cazul unor bacterii, structurile asemănătoare mezozomilor par a fi implicate în <span class="highlight">producerea de energie</span> prin procesul de respirație celulară, servind drept punct de ancorare pentru enzimele implicate în metabolismul respirator.</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="membrane-ttt.jpeg" width="100%" height="100%"></div>
             
             <h3 class="section-title">Importanțe Practice</h3>
             
@@ -644,7 +629,7 @@
                 <p><b>• Centrioli și diviziune celulară: </b>Prezența centriolilor este specifică celulelor animale și joacă un rol esențial în organizarea fusului mitotic în timpul diviziunii celulare.</p>
                 <p><b>• Lizozomi: </b>Aceste organite sunt implicate în digestia intracelulară și reciclarea componentelor celulare, contribuind la menținerea sănătății interne a celulei.</p>
                 <p><b>• Joncțiuni celulare specifice: </b>Aceste organite sunt implicate în digestia intracelulară și reciclarea componentelor celulare, contribuind la menținerea sănătății interne a celulei.</p>
-                <div class="image-placeholder"></div>
+                <div class="image-placeholder"><img src="animale.jpeg" width="100%" height="100%"></div>
             </div>
             <br>
             <div class="title-container">
@@ -656,7 +641,7 @@
                 <p><b>• Cloroplaste pentru fotosinteză: </b>Cloroplastele, care conțin clorofilă, le permit celulelor vegetale să capteze energia solară și să efectueze fotosinteza, transformând lumina în energie chimică.</p>
                 <p><b>• Vacuolă centrală mare: </b>O vaculă centrală impunătoare contribuie la menținerea turgorului, depozitarea apei, a substanțelor nutritive și a deșeurilor, fiind esențială pentru echilibrul osmotic al celulei.</p>
                 <p><b>• Plasmodesme: </b>Aceste canale intercelulare facilitează schimbul de substanțe și semnale între celulele adiacente, coordonând activitățile țesuturilor.</p> 
-                <div class="image-placeholder"></div>
+                <div class="image-placeholder"><img src="vegetale.jpeg" width="100%" height="100%"></div>
             </div>
             <br>
             <div class="title-container">
@@ -668,15 +653,15 @@
                 <p><b>• Nutriție prin digestie extracelulară: </b>Fungi se hrănesc prin secreția de enzime extracelulare, care descompun materia organică în molecule absorbabile, adaptându-se astfel diverselor medii.</p>
                 <p><b>• Structură filamentară: </b>Celulele fungale se organizează adesea în hife, care formează un miceliu vast. Această structură permite o explorare eficientă a mediului și extracția nutrienților din surse variate.</p>
                 <p><b>• Vacule în dimensiuni reduse: </b>Deși vaculele fungale pot fi mai mici decât cele din celulele vegetale, ele contribuie la reglarea echilibrului osmotic și la depozitarea anumitor substanțe.</p>
-                <div class="image-placeholder"></div>
+                <div class="image-placeholder"><img src="fungale.jpeg" width="100%" height="100%"></div>
             </div>
             <br>
             <p><span class="right-align">Fiecare</span> componentă a unei celule eucariote, comune sau specifice, este explicată detaliat în fiecare pagină pe care o accesați de aici:</p>
             <div id="sectiunea_dorita"></div>
             <h4 class="subsection-title">A) Componentele protoplasmatice:</h4>
-            <div class="poza-patru"><a href="https://alexie13.github.io/membrana-celulara-si-citoplasma/" class="alte-pagini">- Membrana Celulară și Citoplasma</a></div>
-            <div class="poza-patru"><a href="https://alexie13.github.io/nucleuri-si-ribozomii/" class="alte-pagini">- Nucleuri și Ribozomii</a></div>
-            <div class="poza-patru"><a href="https://alexie13.github.io/sistemul-endomembranar/" class="alte-pagini">- Sistemul de citomembrane (Reticulul endoplasmatic, Apartul Golgi, Lizozomii)</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Membrana Celulară și Citoplasma</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Nucleuri și Ribozomii</a></div>
+            <div class="poza-patru"><a href="#" class="alte-pagini">- Sistemul de citomembrane (Reticulul endoplasmatic, Apartul Golgi, Lizozomii)</a></div>
             <div class="poza-patru"><a href="#" class="alte-pagini">- Mitocondriile și plastidele</a></div>
             <div class="poza-patru"><a href="#" class="alte-pagini">- Centrul celular și citoscheletul</a></div>
             <div class="poza-patru"><a href="#" class="alte-pagini">- Componente specifice (Prelungiri celulare, Corpusculul Nissl, Miofibrile)</a></div>
@@ -726,7 +711,7 @@
             
             <p><span class="right-align">În</span> această formă de diviziune, nucleul și celula sunt despicate de-a lungul unei axe transversale sau longitudinale, proces determinat de formarea unei fantă la nivelul membranei plasmatice și al peretelui celular. Ca rezultat, apar două celule-fiice identice, un exemplu fiind alga verde Pleurococcus.</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="centrozom.png" width="100%" height="100%"></div>
             
             <p><span class="right-align">După</span> locul și modul de desfășurare, cariochineza se clasifică în două tipuri principale: diviziunea mitotică (somatică) și diviziunea meiotică (reductională).</p>
         </div>
@@ -757,7 +742,7 @@
             
             <p><span class="right-align">Ajunși</span> la polii fusului, cromozomii monocromatidici încep să se despiralizeze și să refacă structura specifică nucleului în interfază. Fusul de diviziune dispare, iar nucleolii și învelișul nuclear se reorganizează, conducând la formarea celor două nuclee-fiice, identice din punct de vedere genetic cu celula-mamă. Simultan, se formează peretele despărțitor, care separă celula-mamă în două celule-fiice diploide.</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="abcd.png" width="100%" height="100%"></div>
         </div>
         
         <!-- Meioza -->
@@ -777,7 +762,7 @@
             
             <p><span class="right-align">Între</span> cele două diviziuni succesive există o interfază scurtă, unde celulele se pregătesc pentru finalizarea procesului.</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="buline verzi.png" width="100%" height="100%"></div>
             
             <h3 class="subsection-title">Etapa reducțională (I) a meiozei</h3>
             
@@ -795,7 +780,7 @@
             <p><b>4. Telofaza 1</b></p>
             <p>Aceasta se caracterizează prin formarea a două celule-fiice, fiecare având un nucleu ce conține un <b>număr redus la jumătate de cromozomi</b> <b>(n = 2)</b> comparativ cu celula-mamă (2n = 4).</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="mitosis.png" width="100%" height="100%"></div>
             
             <h3 class="subsection-title">Etapa ecvațională (II) a meiozei</h3>
             
@@ -808,7 +793,7 @@
             <br>
             <p>La finalul acestui proces, iau naștere <b>patru celule haploide (n = 2)</b>. În funcție de organism, acestea se transformă fie în <b>spori</b> (celule asexuate), fie în <b>gameți</b> (celule sexuate), esențiale pentru reproducerea și perpetuarea speciilor.</p>
             
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder"><img src="buline albastre.png" width="100%" height="100%"></div>
         </div>
     </div>
 
