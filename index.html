@@ -64,7 +64,7 @@
             letter-spacing: 1px;
         }
 
-        /* Buton Acasă - Design îmbunătățit și centrat */
+        /* Buton Acasă - Doar iconița */
         .home-button {
             position: absolute;
             left: 20px;
@@ -73,8 +73,8 @@
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: var(--dark-color);
             border: none;
-            padding: 6px 15px;
-            border-radius: 20px;
+            padding: 8px;
+            border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -82,17 +82,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(0, 230, 192, 0.3);
-            text-transform: uppercase;
-            min-width: 100px;
+            min-width: unset;
+            width: 40px;
+            height: 40px;
             text-align: center;
+            z-index: 15;
         }
 
         .home-button:hover {
-            transform: translateY(calc(-50% - 3px)) scale(1.05);
+            transform: translateY(calc(-50% - 3px)) scale(1.1);
             box-shadow: 0 6px 20px rgba(0, 230, 192, 0.5);
         }
 
@@ -101,7 +100,7 @@
         }
 
         .home-button i {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         /* Main Content Styles */
@@ -312,13 +311,17 @@
         @media (max-width: 768px) {
             .logo h1 {
                 font-size: 1.3rem;
+                padding-left: 50px; /* Redus spațiul pentru iconița home */
             }
             
             .home-button {
                 left: 10px;
-                min-width: 90px;
-                padding: 5px 10px;
-                font-size: 0.8rem;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .home-button i {
+                font-size: 1rem;
             }
             
             .page-title {
@@ -346,6 +349,7 @@
             
             .logo h1 {
                 font-size: 1.1rem;
+                padding-left: 40px; /* Redus spațiul pentru iconița home */
             }
             
             .logo svg {
@@ -355,9 +359,9 @@
             
             .home-button {
                 left: 5px;
-                min-width: 70px;
-                padding: 4px 8px;
-                font-size: 0.7rem;
+                width: 30px;
+                height: 30px;
+                padding: 6px;
             }
             
             .home-button i {
@@ -389,13 +393,17 @@
             }
         }
 
+        /* Header pentru versiunea mobilă */
         @media (max-width: 360px) {
             header {
                 height: 50px;
+                padding: 0 10px;
             }
             
             .logo h1 {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                padding-left: 35px; /* Redus spațiul pentru iconița home */
+                white-space: nowrap;
             }
             
             .logo svg {
@@ -404,7 +412,13 @@
             }
             
             .home-button {
-                min-width: 60px;
+                width: 26px;
+                height: 26px;
+                padding: 5px;
+            }
+            
+            .home-button i {
+                font-size: 0.7rem;
             }
             
             .main-content {
@@ -435,7 +449,7 @@
     
     <!-- Header -->
     <header>
-        <a href="https://alexie13.github.io/biogenius-academy/" class="home-button"><i class="fas fa-home"></i> Acasă</a>
+        <a href="https://alexie13.github.io/biogenius-academy/" class="home-button"><i class="fas fa-home"></i></a>
         <div class="logo">
             <svg width="40" height="40" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="#00e6c0" stroke-width="2" />
@@ -660,7 +674,7 @@
             <p><span class="right-align">Fiecare</span> componentă a unei celule eucariote, comune sau specifice, este explicată detaliat în fiecare pagină pe care o accesați de aici:</p>
             <div id="sectiunea_dorita"></div>
             <h4 class="subsection-title">A) Componentele protoplasmatice:</h4>
-            <div class="poza-patru"><a href="#" class="alte-pagini">- Membrana Celulară și Citoplasma</a></div>
+            <div class="poza-patru"><a href="http://127.0.0.1:5500/index.html" class="alte-pagini">- Membrana Celulară și Citoplasma</a></div>
             <div class="poza-patru"><a href="#" class="alte-pagini">- Nucleuri și Ribozomii</a></div>
             <div class="poza-patru"><a href="#" class="alte-pagini">- Sistemul de citomembrane (Reticulul endoplasmatic, Apartul Golgi, Lizozomii)</a></div>
             <div class="poza-patru"><a href="#" class="alte-pagini">- Mitocondriile și plastidele</a></div>
