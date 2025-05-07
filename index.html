@@ -204,19 +204,35 @@
 
         /* Spațiu pentru imagini */
         .image-placeholder {
-            width: 100%;
-            max-width: 100%;
-            height: 100%;
-            background-color: rgba(0, 230, 192, 0.1);
-            border: 1px dashed var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            border-radius: 10px;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
+    width: 100%;
+    max-width: 100%;
+    /* Înlocuiește height: 100% cu aspect-ratio sau un padding-top procentual */
+    aspect-ratio: 16/9; /* sau orice alt raport dorit */
+    /* SAU */
+    position: relative;
+    padding-top: 56.25%; /* pentru raport 16:9 (9/16 * 100%) */
+    
+    background-color: rgba(0, 230, 192, 0.1);
+    border: 1px dashed var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    border-radius: 10px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: auto; /* Păstrează raportul de aspect */
+    object-fit: contain; /* Asigură că imaginea se încadrează fără distorsiune */
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
 
         .poza {
             padding: 25px 0;
@@ -341,7 +357,7 @@
             }
             
             .image-placeholder {
-                height: 200px;
+                height: auto;
             }
         }
 
@@ -384,7 +400,7 @@
             }
             
             .image-placeholder {
-                height: 150px;
+                height: auto;
             }
             
             .content-card {
@@ -492,7 +508,7 @@
             
             <h3 class="section-title">Componentele Principale ale Celulei Procariote:</h3>
             
-            <div class="image-placeholder"><img src="imagine-procariota.jpeg" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="imagine-procariota.jpeg" width="100%" height="auto"></div>
         </div>
         
         <!-- Capsula -->
@@ -515,7 +531,7 @@
                 <button class="toggle-btn">+</button>
             </div>
             <div class="content-box" style="display: none;">
-               <div class="image-placeholder"><img src="perete-celular.jpeg" width="100%" height="100%"></div>
+               <div class="image-placeholder"><img src="perete-celular.jpeg" width="100%" height="auto"></div>
             </div>
         </div>
         
@@ -527,7 +543,7 @@
             
             <p><span class="right-align">Membranele</span> celulare ale arheelor au câteva proprietăți unice, diferite de cele ale bacteriilor și eucariotelor. De exemplu, la unele specii, cozile fosfolipidice opuse sunt unite într-o singură coadă, formând un strat simplu în loc de un strat dublu (după cum este arătat mai jos). Această modificare poate stabiliza membrana la temperaturi ridicate, permițându-le arheelor să trăiască fericite în izvoare termale.</p>
             
-            <div class="image-placeholder"><img src="bacterii.jpeg" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="bacterii.jpeg" width="100%" height="auto"></div>
         </div>
         
         <!-- Anexe celulare -->
@@ -539,14 +555,14 @@
             
             <p><span class="right-align">Anexele</span> mai lungi, numite pili (singular: pil), sunt de mai multe tipuri care au roluri diferite. De exemplu, un pil sexual ține două celule bacteriene laolaltă și permite transferul ADN-ului între ele, într-un proces numit conjugare. O altă clasă de pili bacterieni, numiți pili de tip IV, ajută bacteria să se miște în mediul său</p>
             
-            <div class="image-placeholder"><img src="sex-pilus.jpeg" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="sex-pilus.jpeg" width="100%" height="auto"></div>
             
             <div class="title-container">
                 <h3 class="section-centered">Observarea Microscopică a Anexelor:</h3>
                 <button class="toggle-btn">+</button>
             </div>
             <div class="content-box" style="display: none;">
-                <div class="image-placeholder"><img src="paduche.jpeg" width="100%" height="100%"></div>
+                <div class="image-placeholder"><img src="paduche.jpeg" width="100%" height="auto"></div>
             </div>
             
             <p><span class="right-align">Cu</span> toate acestea, cele mai comune anexe utilizate pentru a se mișca sunt flagelii (singular: flagel). Aceste structuri asemănătoare cozii se învârt ca o elice pentru a deplasa celulele prin medii apoase.</p>
@@ -560,7 +576,7 @@
             
             <p><span class="right-align">Prin</span> definiție, procariotele nu au un nucleu delimitat de membrană pentru a-și ține cromozomii. În schimb, cromozomul unei procariote este se găsește într-o parte a citoplasmei numită nucleoid.</p>
             
-            <div class="image-placeholder"><img src="adn-procariota.jpeg" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="adn-procariota.jpeg" width="100%" height="auto"></div>
             
             <p><span class="right-align">Pe</span> lângă cromozom, multe procariote au plasmide, care sunt mici inele de ADN extra-cromozomial („în afara cromozomului") dublu catenar. Plasmidele poartă un număr mic de gene neesențiale și sunt copiate independent de cromozomul din interiorul celulei. Ele pot fi transferate către alte procariote dintr-o populație, uneori răspândind gene benefice pentru supraviețuire.</p>
             
@@ -581,7 +597,7 @@
             
             <p><span class="right-align">Mezozomii</span> sunt structuri invaginate ale membranei plasmatice, observate inițial la bacterii Gram-pozitive. Deși au fost interpretați mult timp ca având roluri funcționale (implicate în respirația celulară, diviziunea celulară sau procesarea materialului genetic), cercetările mai recente sugerează că ar putea fi artefacte ale preparării celulelor pentru microscopie electronică. Cu toate acestea, în cazul unor bacterii, structurile asemănătoare mezozomilor par a fi implicate în <span class="highlight">producerea de energie</span> prin procesul de respirație celulară, servind drept punct de ancorare pentru enzimele implicate în metabolismul respirator.</p>
             
-            <div class="image-placeholder"><img src="membrane-ttt.jpeg" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="membrane-ttt.jpeg" width="100%" height="auto"></div>
             
             <h3 class="section-title">Importanțe Practice</h3>
             
@@ -637,7 +653,7 @@
                 <p><b>• Centrioli și diviziune celulară: </b>Prezența centriolilor este specifică celulelor animale și joacă un rol esențial în organizarea fusului mitotic în timpul diviziunii celulare.</p>
                 <p><b>• Lizozomi: </b>Aceste organite sunt implicate în digestia intracelulară și reciclarea componentelor celulare, contribuind la menținerea sănătății interne a celulei.</p>
                 <p><b>• Joncțiuni celulare specifice: </b>Aceste organite sunt implicate în digestia intracelulară și reciclarea componentelor celulare, contribuind la menținerea sănătății interne a celulei.</p>
-                <div class="image-placeholder"><img src="animale.jpeg" width="100%" height="100%"></div>
+                <div class="image-placeholder"><img src="animale.jpeg" width="100%" height="auto"></div>
             </div>
             <br>
             <div class="title-container">
@@ -649,7 +665,7 @@
                 <p><b>• Cloroplaste pentru fotosinteză: </b>Cloroplastele, care conțin clorofilă, le permit celulelor vegetale să capteze energia solară și să efectueze fotosinteza, transformând lumina în energie chimică.</p>
                 <p><b>• Vacuolă centrală mare: </b>O vaculă centrală impunătoare contribuie la menținerea turgorului, depozitarea apei, a substanțelor nutritive și a deșeurilor, fiind esențială pentru echilibrul osmotic al celulei.</p>
                 <p><b>• Plasmodesme: </b>Aceste canale intercelulare facilitează schimbul de substanțe și semnale între celulele adiacente, coordonând activitățile țesuturilor.</p> 
-                <div class="image-placeholder"><img src="vegetale.jpeg" width="100%" height="100%"></div>
+                <div class="image-placeholder"><img src="vegetale.jpeg" width="100%" height="auto"></div>
             </div>
             <br>
             <div class="title-container">
@@ -661,7 +677,7 @@
                 <p><b>• Nutriție prin digestie extracelulară: </b>Fungi se hrănesc prin secreția de enzime extracelulare, care descompun materia organică în molecule absorbabile, adaptându-se astfel diverselor medii.</p>
                 <p><b>• Structură filamentară: </b>Celulele fungale se organizează adesea în hife, care formează un miceliu vast. Această structură permite o explorare eficientă a mediului și extracția nutrienților din surse variate.</p>
                 <p><b>• Vacule în dimensiuni reduse: </b>Deși vaculele fungale pot fi mai mici decât cele din celulele vegetale, ele contribuie la reglarea echilibrului osmotic și la depozitarea anumitor substanțe.</p>
-                <div class="image-placeholder"><img src="fungale.jpeg" width="100%" height="100%"></div>
+                <div class="image-placeholder"><img src="fungale.jpeg" width="100%" height="auto"></div>
             </div>
             <br>
             <p><span class="right-align">Fiecare</span> componentă a unei celule eucariote, comune sau specifice, este explicată detaliat în fiecare pagină pe care o accesați de aici:</p>
@@ -719,7 +735,7 @@
             
             <p><span class="right-align">În</span> această formă de diviziune, nucleul și celula sunt despicate de-a lungul unei axe transversale sau longitudinale, proces determinat de formarea unei fantă la nivelul membranei plasmatice și al peretelui celular. Ca rezultat, apar două celule-fiice identice, un exemplu fiind alga verde Pleurococcus.</p>
             
-            <div class="image-placeholder"><img src="centrozom.png" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="centrozom.png" width="100%" height="auto"></div>
             
             <p><span class="right-align">După</span> locul și modul de desfășurare, cariochineza se clasifică în două tipuri principale: diviziunea mitotică (somatică) și diviziunea meiotică (reductională).</p>
         </div>
@@ -750,7 +766,7 @@
             
             <p><span class="right-align">Ajunși</span> la polii fusului, cromozomii monocromatidici încep să se despiralizeze și să refacă structura specifică nucleului în interfază. Fusul de diviziune dispare, iar nucleolii și învelișul nuclear se reorganizează, conducând la formarea celor două nuclee-fiice, identice din punct de vedere genetic cu celula-mamă. Simultan, se formează peretele despărțitor, care separă celula-mamă în două celule-fiice diploide.</p>
             
-            <div class="image-placeholder"><img src="abcd.png" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="abcd.png" width="100%" height="auto"></div>
         </div>
         
         <!-- Meioza -->
@@ -770,7 +786,7 @@
             
             <p><span class="right-align">Între</span> cele două diviziuni succesive există o interfază scurtă, unde celulele se pregătesc pentru finalizarea procesului.</p>
             
-            <div class="image-placeholder"><img src="buline verzi.png" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="buline verzi.png" width="100%" height="auto"></div>
             
             <h3 class="subsection-title">Etapa reducțională (I) a meiozei</h3>
             
@@ -788,7 +804,7 @@
             <p><b>4. Telofaza 1</b></p>
             <p>Aceasta se caracterizează prin formarea a două celule-fiice, fiecare având un nucleu ce conține un <b>număr redus la jumătate de cromozomi</b> <b>(n = 2)</b> comparativ cu celula-mamă (2n = 4).</p>
             
-            <div class="image-placeholder"><img src="mitosis.png" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="mitosis.png" width="100%" height="auto"></div>
             
             <h3 class="subsection-title">Etapa ecvațională (II) a meiozei</h3>
             
@@ -801,7 +817,7 @@
             <br>
             <p>La finalul acestui proces, iau naștere <b>patru celule haploide (n = 2)</b>. În funcție de organism, acestea se transformă fie în <b>spori</b> (celule asexuate), fie în <b>gameți</b> (celule sexuate), esențiale pentru reproducerea și perpetuarea speciilor.</p>
             
-            <div class="image-placeholder"><img src="buline albastre.png" width="100%" height="100%"></div>
+            <div class="image-placeholder"><img src="buline albastre.png" width="100%" height="auto"></div>
         </div>
     </div>
 
