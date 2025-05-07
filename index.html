@@ -203,15 +203,14 @@
         }
 
         /* Spațiu pentru imagini */
-       .image-placeholder {
+      .image-placeholder {
     width: 100%;
     position: relative;
-    padding-bottom: 56.25%; /* Raport 16:9, poți ajusta în funcție de nevoie */
+    padding-bottom: 56.25%;
     background-color: rgba(0, 230, 192, 0.1);
     border: 2px dashed var(--primary-color);
     margin: 20px 0;
     border-radius: 10px;
-    overflow: hidden; /* Asigură că imaginea nu iese din border */
 }
 
 .image-placeholder img {
@@ -220,7 +219,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Schimbat din contain în cover pentru a umple spațiul */
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.2); /* Fundal pentru zonele neacoperite */
     display: block;
 }
         .poza {
